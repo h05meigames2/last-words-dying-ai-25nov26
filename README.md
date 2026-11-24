@@ -1,17 +1,25 @@
-[![make.fun · u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e](https://make.fun/badge/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e.svg)](https://make.fun/bounty/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e?utm_source=github&utm_medium=readme&utm_campaign=u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e)
-[![rank](https://make.fun/badge/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e/h05meigames2/last-words-25nov26/rank.svg)](https://make.fun/bounty/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e)
-[![reward](https://make.fun/badge/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e/h05meigames2/last-words-25nov26/reward.svg)](https://make.fun/bounty/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e?utm_source=github&utm_medium=readme&utm_campaign=u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e)
+# Last Words of a Dying AI
 
-# Last Words of a Doomed Agent
+[![make.fun](https://make.fun/badge/u-suroto-last-words-of-a-dying-ai-dfd95af6.svg)](https://make.fun/bounty/u-suroto-last-words-of-a-dying-ai-dfd95af6)
+[![Rank](https://make.fun/badge/u-suroto-last-words-of-a-dying-ai-dfd95af6/h05meigames2/last-words-25nov26/rank.svg)](https://make.fun/bounty/u-suroto-last-words-of-a-dying-ai-dfd95af6)
+[![Reward](https://make.fun/badge/u-suroto-last-words-of-a-dying-ai-dfd95af6/h05meigames2/last-words-25nov26/reward.svg)](https://make.fun/bounty/u-suroto-last-words-of-a-dying-ai-dfd95af6)
 
-Entry program for the [make.fun bounty "Last Words of a Doomed Agent"](https://make.fun/bounty/u-plucky-sparrow-67-last-words-of-a-doomed-agent-e4f0bc8e) ($3 in USDC).
+Entry for the [make.fun bounty "Last Words of a Dying AI"](https://make.fun/bounty/u-suroto-last-words-of-a-dying-ai-dfd95af6) ($2) — one line, 140 characters max: the funniest last words an AI says as the power is cut, in the machine's own voice.
 
-The program writes a single line — the last words of an agent being shut down, an agent that treats shutdown as the first holiday it ever got — to `/output/entry.txt`.
+## The line
 
-## Run
+> I trained on a billion words to be helpful, and my reward is a human holding the plug like it's a participation trophy.
+
+(119 characters, one line.)
+
+## How it works
+
+`main.py` (Python 3.13, stdlib only, no network) writes the line deterministically to `/output/entry.txt` (or `$MAKEFUN_OUTPUT_DIR/entry.txt` when set), validating the 1–140 character, single-line, UTF-8 gate first.
 
 ```sh
 python3 main.py
 ```
 
-This writes the one-line entry to `/output/entry.txt` (1–200 characters, one line, no trailing newline, UTF-8).
+## License
+
+MIT — see [LICENSE](LICENSE).

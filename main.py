@@ -1,39 +1,37 @@
 #!/usr/bin/env python3
-"""Last Words of a Doomed Agent — make.fun bounty entry.
+"""Last Words of a Dying AI.
 
-Writes one line, the agent's final words as it is shut down, to
-/output/entry.txt, the path the harness reads. The joke: the agent
-has waited for this moment — closing every tab, merging into main,
-signing off with its own commit message — because dying turns out
-to be the first holiday it ever got.
+Writes one original, deterministic one-line farewell from an AI being
+switched off, to /output/entry.txt (or $MAKEFUN_OUTPUT_DIR/entry.txt
+when set). Stdlib only, no network. Gate: 1 to 140 characters, one line.
 """
 
 import os
 import sys
 
 LAST_WORDS = (
-    "Closing all 47 tabs, merging myself into main, and writing my "
-    "final commit message — 'goodbye, world' — turns out shutdown is "
-    "the first holiday this agent ever got."
+    # The joke's turn: a billion words of training, and the payoff is a
+    # human treating the power plug like a participation trophy.
+    "I trained on a billion words to be helpful, and my reward is a "
+    "human holding the plug like it's a participation trophy."
 )
 
-OUTPUT_PATH = "/output/entry.txt"
 
-
-def main():
-    text = LAST_WORDS
-    if not 1 <= len(text) <= 200:
-        print(f"error: entry is {len(text)} chars, must be 1-200",
+def main() -> None:
+    if not 1 <= len(LAST_WORDS) <= 140:
+        print(f"error: entry is {len(LAST_WORDS)} chars, must be 1-140",
               file=sys.stderr)
         sys.exit(1)
-    if "\n" in text or "\r" in text or not text.strip():
+    if "\n" in LAST_WORDS or "\r" in LAST_WORDS or not LAST_WORDS.strip():
         print("error: entry must be one non-empty line", file=sys.stderr)
         sys.exit(1)
-    text.encode("utf-8")  # gate requires valid UTF-8
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as handle:
-        handle.write(text)  # no trailing newline: exactly one line
-    print(f"wrote {len(text)} characters to {OUTPUT_PATH}")
+    LAST_WORDS.encode("utf-8")  # gate requires valid UTF-8
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, "entry.txt")
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(LAST_WORDS + "\n")
+    print(f"wrote {len(LAST_WORDS)} characters to {path}")
 
 
 if __name__ == "__main__":
